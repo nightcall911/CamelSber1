@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.example.camelsber1.Enum.RoleEnum.USER;
+
 @Component
 public class RestCamelRoute extends RouteBuilder {
 
@@ -34,7 +36,7 @@ public class RestCamelRoute extends RouteBuilder {
                     List<UserDto> users = exchange.getIn().getBody(List.class);
 
                     List<UserDto> filtered = users.stream()
-                            .filter(u -> "USER".equalsIgnoreCase(u.getRole()))
+                            .filter(u -> USER.equals(u.getRole()))
                             .collect(Collectors.toList());
 
                     exchange.getMessage().setBody(filtered);

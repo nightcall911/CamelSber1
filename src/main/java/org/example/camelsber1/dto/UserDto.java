@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.camelsber1.Enum.RoleEnum;
 
 @Data
 @NoArgsConstructor
@@ -11,9 +12,10 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDto {
 
-   private String name;
+    private String name;
 
-   private int age;
+    private int age;
 
-   private String role;
+    RoleEnum role;
+
 }
