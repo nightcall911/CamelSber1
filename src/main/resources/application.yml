@@ -2,6 +2,9 @@ server:
   port: 8080
 
 camel:
-  springboot:
+  main:
     name: CamelSber1
-    main-run-controller: true
+
+  servlet:
+    mapping:
+      context-path: /camel/*

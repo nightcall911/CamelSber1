@@ -8,11 +8,4 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CamelConfig {
 
-    @Bean
-    public ServletRegistrationBean camelServletRegistrationBean() {
-        ServletRegistrationBean servlet = new ServletRegistrationBean(
-                new CamelHttpTransportServlet());
-        servlet.setName("CamelServlet");
-        return servlet;
-    }
 }

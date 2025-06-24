@@ -45,11 +45,11 @@
             <artifactId>camel-servlet-starter</artifactId>
             <version>4.12.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.38</version>
-            <scope>provided</scope>
+            <version>1.18.30</version>
         </dependency>
 
         <dependency>
@@ -58,25 +58,32 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Camel core -->
+
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
             <version>4.12.0</version>
         </dependency>
 
-        <!-- REST support via servlet -->
+
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-servlet-starter</artifactId>
             <version>4.12.0</version>
         </dependency>
 
-        <!-- JSON support -->
+
+
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-jackson-starter</artifactId>
             <version>4.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
