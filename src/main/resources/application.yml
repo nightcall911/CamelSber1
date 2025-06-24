@@ -1,0 +1,7 @@
+server:
+  port: 8080
+
+camel:
+  springboot:
+    name: CamelSber1
+    main-run-controller: true
