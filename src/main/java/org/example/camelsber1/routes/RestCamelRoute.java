@@ -44,7 +44,7 @@ public class RestCamelRoute extends RouteBuilder {
                     public void process(Exchange exchange) throws Exception {
                         UserDto[] users = exchange.getIn().getBody(UserDto[].class);
                         List<UserDto> filtered = Arrays.stream(users)
-                                .filter(u -> u.getRole() == RoleEnum.USER)
+                                .filter(u -> u.role() == RoleEnum.USER)
                                 .collect(Collectors.toList());
                         ObjectMapper objectMapper = new ObjectMapper();
                         String json = objectMapper.writeValueAsString(filtered);

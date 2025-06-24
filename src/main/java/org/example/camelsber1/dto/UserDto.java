@@ -9,27 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.camelsber1.Enum.RoleEnum;
 
-@Data
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-@AllArgsConstructor
-@NoArgsConstructor
-public class UserDto {
 
-    private String name;
-
-    private int age;
-
-    private RoleEnum role;
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public RoleEnum getRole() {
-        return role;
-    }
+public record UserDto (String name, int age, RoleEnum role) {
 }
