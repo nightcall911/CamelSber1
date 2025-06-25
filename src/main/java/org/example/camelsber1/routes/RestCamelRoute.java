@@ -7,13 +7,11 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
-import org.apache.camel.model.dataformat.JsonLibrary;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.example.camelsber1.Enum.RoleEnum;
 import org.example.camelsber1.dto.UserDto;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,24 +20,21 @@ import java.util.stream.Collectors;
 @Component
 public class RestCamelRoute extends RouteBuilder {
 
-
     @Override
     public void configure() throws Exception {
         JacksonDataFormat userArrayFormat = new JacksonDataFormat(UserDto[].class);
         userArrayFormat.disableFeature(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
-        // REST-конфигурация
         restConfiguration().component("servlet")
-                .bindingMode(RestBindingMode.off); // отключаем автоматическое биндинг, т.к. сами анмаршалим
+                .bindingMode(RestBindingMode.off);
 
-        // Ручка REST + ручной анмаршалинг с игнорированием полей
         rest("/users")
                 .post()
                 .consumes("application/json")
                 .to("direct:processUsers");
 
         from("direct:processUsers")
-                .unmarshal(userArrayFormat) // использовать наш кастомный формат
+                .unmarshal(userArrayFormat)
                 .process(new Processor() {
                     public void process(Exchange exchange) throws Exception {
                         UserDto[] users = exchange.getIn().getBody(UserDto[].class);
@@ -53,7 +48,7 @@ public class RestCamelRoute extends RouteBuilder {
                     }
                 })
 
-                .to("mock:kafka")
+                .to("kafka:users?brokers=localhost:9092")
                 .log("Отправлено отфильтрованное сообщение в Kafka: ${body}");
     }
 }

@@ -8,3 +8,6 @@ camel:
   servlet:
     mapping:
       context-path: /camel/*
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
